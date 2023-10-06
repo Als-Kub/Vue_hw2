@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js - Homework#1 </title>
+</head>
+
+<body>
+    <!-- ---Часть 2. Задание по Vue---
+Вы разрабатываете приложение для отображения и сортировки списка товаров. У вас есть массив объектов products, где каждый объект представляет товар с его названием и ценой. Вам необходимо отобразить список товаров и предоставить пользователю возможность сортировать товары по цене (по возрастанию и по убыванию). -->
+
+
+
+    <div id="vieApp" class="demo">
+
+        <h1>Сортировка товаров по цене</h1>
+        <button @click="sortUp">Сначала дешевые</button> <button @click="sortDown">Сначала дорогие</button>
+        <ul>
+            <li v-for="product in products">{{product.name}} - {{product.price}} ₽</li>
+        </ul>
+    </div>
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        const VueApp = {
+            data() {
+                return {
+
+                    products: [
+                        { name: 'Product-1', price: 200 }, { name: 'Product-2', price: 100 }, { name: 'Product-3', price: 300 }],
+                }
+            },
+            methods: {
+                sortUp() {
+                    console.log(this.products.sort((a, b) => a.price - b.price));
+
+                },
+
+                sortDown() {
+                    console.log(this.products.sort((a, b) => b.price - a.price));
+                }
+
+
+            }
+        }
+        Vue.createApp(VueApp).mount('#vieApp')
+    </script>
+
+</body>
+
+</html>
